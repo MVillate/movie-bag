@@ -16,8 +16,8 @@ movies = [
 ]
 
 
-@app.route('/', methods=['GET'])
-def show_movies():
+@app.route('/movies')
+def hello():
     return jsonify(movies)
 
 
@@ -25,7 +25,7 @@ def show_movies():
 def add_movie():
     movie = request.get_json()
     movies.append(movie)
-    return jsonify(movie), 200
+    return {'id': len(movies)-1}, 200
 
 
 @app.route('/movies/<int:index>', methods=['PUT'])
